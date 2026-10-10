@@ -46,6 +46,13 @@
             <span id="calculationStatus" class="calculation-status" hidden>Analyzing…</span>
           </div>
           <p class="solver-count"><strong id="candidateCount">&mdash;</strong> possibilities</p>
+          <div id="attemptBox" class="attempt" aria-live="polite">
+            <div class="attempt-head">
+              <h3 class="field-heading attempt-heading">Current attempt</h3>
+              <span id="attemptWord" class="attempt-word" aria-label="Current word being typed">&mdash;</span>
+            </div>
+            <p id="attemptStats" class="muted">Type a word to preview its strength.</p>
+          </div>
           <div id="suggestionsList" class="suggestions-list" aria-live="polite">
             <p class="muted">Add a guess and choose <strong>Analyze position</strong>.</p>
           </div>
