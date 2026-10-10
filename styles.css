@@ -161,6 +161,12 @@ body {
 .button.ghost:hover { background: var(--surface-2); }
 .button:disabled { opacity: 0.45; cursor: not-allowed; }
 
+.icon-button {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 44px; padding: 10px 12px;
+}
+.icon-button svg { width: 18px; height: 18px; display: block; }
+
 /* ---------- Layout: single column by default, two columns when space allows ---------- */
 
 .workspace {
