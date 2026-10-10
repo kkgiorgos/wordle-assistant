@@ -5,7 +5,7 @@ Local-first helper for solving Wordle. No server, no tracking — everything run
 ## Use
 
 1. Open `index.html` directly in a browser (`file://` works, no build needed).
-2. Type your Wordle guess with a physical keyboard or the on-screen keyboard. The **Current attempt** panel scores the word live as you type (same worst-case / average / bits stats as the recommendations, plus a dictionary prefix count while the word is incomplete).
+2. Type your Wordle guess with a physical keyboard or the on-screen keyboard. The **Current attempt** panel scores the word live as you type (same worst-case / average / bits stats as the recommendations, plus a dictionary prefix count while the word is incomplete) and keeps showing it until you analyze.
 3. Click a tile to cycle `miss (gray) → present (yellow) → correct (green)` to match Wordle's feedback.
 4. Press **Analyze position** (auto-runs on load, or press Enter). Repeat after each guess. When no words match the position, recommendations are hidden until you fix the tiles.
 5. Press **USE** on a suggestion to drop it into the next row, or click any word in the field list.
