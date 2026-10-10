@@ -28,7 +28,7 @@
       <div class="workspace">
         <section class="panel board-panel" aria-labelledby="board-heading">
           <div class="section-head">
-            <h2 id="board-heading">Guesses</h2>
+            <h2 id="board-heading" tabindex="-1">Guesses</h2>
             <span id="guessCount" class="counter" role="status" aria-live="polite">0 / 6</span>
           </div>
           <div id="board" class="board" role="group" aria-label="Wordle guesses. Type a word, then activate a tile to cycle its color."></div>
@@ -45,14 +45,15 @@
             <h2 id="solver-heading">Solver</h2>
             <span id="calculationStatus" class="calculation-status" hidden>Analyzing…</span>
           </div>
-          <p class="solver-count"><strong id="candidateCount">&mdash;</strong> possibilities</p>
-          <div id="attemptBox" class="attempt" aria-live="polite">
+          <p class="solver-count"><strong id="candidateCount">&mdash;</strong> <span id="candidateLabel">possibilities</span></p>
+          <div id="attemptBox" class="attempt" aria-live="polite" aria-atomic="true">
             <div class="attempt-head">
               <h3 class="field-heading attempt-heading">Current attempt</h3>
               <span id="attemptWord" class="attempt-word" aria-label="Current word being typed">&mdash;</span>
             </div>
             <p id="attemptStats" class="muted">Type a word to preview its strength.</p>
           </div>
+          <p class="legend muted">answer = still possible &middot; probe = information only</p>
           <div id="suggestionsList" class="suggestions-list" aria-live="polite">
             <p class="muted">Add a guess and choose <strong>Analyze position</strong>.</p>
           </div>
