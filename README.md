@@ -15,12 +15,6 @@ Red row = not in dictionary. Change it to see stats again.
 
 ## What it does
 
-- **Position snapshot:** possible solutions remaining, locked greens, known yellows, excluded letters.
-- **Suggested guesses (3):**
-  - Best worst-case (minimizes max remaining)
-  - Best average-case (minimizes expected remaining)
-  - Most information (max entropy, in bits)
-- **Available solutions:** filtered candidate list (first 300 shown), click to play.
-- **Letter frequency:** top 8 letters across remaining candidates with % coverage.
+- **Solver:** possible-solution count, 3 suggested guesses (worst-case / average-case / most information in bits), and a clickable candidate list (first 300 shown).
 - **Solver details:** exact Wordle feedback (duplicate-letter safe) in `worker.js`, runs in a Web Worker so the UI stays responsive. Allowed guesses from `words.txt` (~14.8k), solutions from `solutions.txt` (~2.3k; falls back to `dictionary.js` filtering if missing). Opening recommendations are precomputed in `precomputed.js` (`olate / roate / tarse`) and served instantly with no worker run; the worker only runs once you enter a guess.
-- **Offline + private:** static `HTML/CSS/JS + txt`, works from `file://` down to 380px width. No data leaves your device. System fonts only (no network), light + dark via your OS setting, 44px+ touch targets, visible focus, reduced-motion respected.
+- **Offline + private:** static `HTML/CSS/JS + txt`, works from `file://` down to 380px width. No data leaves your device. System fonts only (no network), Catppuccin Mocha (dark) + Latte (light) via your OS setting with a manual Mocha / Latte / Auto toggle, sky accent for the primary action only, 44px+ touch targets, visible focus, reduced-motion respected.
