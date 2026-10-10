@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#102f35" />
+    <title>Wordle Scout — Offline Wordle solver</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Wordle Scout home"><span class="brand-mark">W</span><div><p class="eyebrow">OFFLINE SOLVER</p><h1>Wordle Scout</h1></div></a>
+        <div class="top-actions"><span id="dictionaryStatus" class="status-pill">Loading dictionary…</span><button id="newGameBtn" class="button ghost">New game <span class="button-icon">↗</span></button></div>
+      </header>
+
+      <div class="intro">
+        <div><p class="eyebrow">MAKE YOUR NEXT GUESS COUNT</p><h2>Read the board.<br><em>Find the signal.</em></h2></div>
+        <p class="intro-copy">Enter your Wordle guesses below and mark each tile. Scout narrows the field locally, then surfaces the moves with the most useful information.</p>
+      </div>
+
+      <div class="workspace">
+        <section class="board-panel panel">
+          <div class="section-head"><div><p class="eyebrow">CURRENT GAME</p><h3>Guess history</h3></div><span id="guessCount" class="counter">0 / 6</span></div>
+          <div id="board" class="board"></div>
+          <div class="entry-help"><span class="key-hint">HOW TO USE</span> Type a word, then tap tiles to cycle <span class="legend"><i class="legend-gray"></i>miss <i class="legend-yellow"></i>present <i class="legend-green"></i>correct</span></div>
+          <div id="keyboard" class="keyboard" aria-label="On-screen keyboard"></div>
+          <div class="board-actions"><button id="solveBtn" class="button primary">Analyze position <span>→</span></button><button id="undoWordBtn" class="button ghost">Undo word</button></div>
+        </section>
+
+        <aside class="insights">
+          <section class="panel snapshot">
+            <div class="section-head"><div><p class="eyebrow">POSITION SNAPSHOT</p><h3>What’s left</h3></div><span class="live-dot">LIVE</span></div>
+            <div class="big-number" id="candidateCount">—</div><p class="muted">possible solutions remaining</p>
+            <div class="stat-grid"><div><strong id="knownGreens">0</strong><span>locked greens</span></div><div><strong id="knownYellows">0</strong><span>known yellows</span></div><div><strong id="excludedLetters">0</strong><span>excluded letters</span></div></div>
+          </section>
+          <section class="panel suggestions">
+            <div class="section-head"><div><p class="eyebrow">NEXT MOVE</p><h3>Suggested guesses</h3></div><span id="calculationStatus" class="calculation-status" hidden><i></i> CALCULATING</span></div>
+            <div id="suggestionsList" class="suggestions-list"><div class="empty-state">Add a guess and analyze the position to see the best moves.</div></div>
+          </section>
+        </aside>
+      </div>
+
+      <section class="lower-grid">
+        <section class="panel candidates"><div class="section-head"><div><p class="eyebrow">THE FIELD</p><h3>Available solutions</h3></div><span id="fieldCount" class="counter">Waiting</span></div><div id="candidateList" class="candidate-list"><span class="muted">Your remaining words will appear here.</span></div></section>
+        <section class="panel stats"><div class="section-head"><div><p class="eyebrow">FIELD INSIGHTS</p><h3>Letter frequency</h3></div><span class="trophy">✦</span></div><div id="letterStats" class="letter-stats"><span class="muted">Available-word stats will appear here.</span></div></section>
+      </section>
+      <footer><span>WORDLE SCOUT <b>•</b> LOCAL-FIRST</span><span>No data leaves your device</span></footer>
+    </main>
+    <script src="dictionary.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
