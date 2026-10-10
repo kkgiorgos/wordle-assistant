@@ -231,7 +231,6 @@ body {
   letter-spacing: 0.08em; text-transform: uppercase;
 }
 .attempt p { margin: 2px 0 0; }
-.recommender-info { font-size: 0.75rem; margin: 2px 0 0; }
 .attempt.is-invalid .attempt-word { color: var(--danger); }
 
 .suggestions-list { display: flex; flex-direction: column; }
