@@ -1,5 +1,5 @@
-/* Wordle Assistant — Catppuccin Mocha (dark) / Latte (light), sky accent.
-   One accent = one meaning (sky = primary action only).
+/* Wordle Assistant — Catppuccin Mocha (dark, sky accent) / Latte (light, maroon accent).
+   One accent = one meaning (accent = primary action only).
    Status colors: green = correct, yellow = present, overlay = miss, red = error.
    Theme: <html data-theme="auto|mocha|latte">, auto follows prefers-color-scheme. */
 
@@ -48,8 +48,8 @@
   --line: #ccd0da;
   --text: #4c4f69;        /* 7.1:1 on base */
   --subtext: #5c5f77;     /* 5.5:1 on base */
-  --accent: #04a5e5;      /* sky */
-  --accent-ink: #11111b;  /* 6.7:1 on sky */
+  --accent: #e64553;      /* maroon */
+  --accent-ink: #ffffff;  /* 3.9:1 on maroon — buttons/brand are bold, 3:1 threshold */
   --correct: #40a02b;
   --correct-ink: #ffffff; /* 3.3:1 — tiles/keys are ≥13px bold, 3:1 threshold */
   --present: #df8e1d;
@@ -72,8 +72,8 @@
     --line: #ccd0da;
     --text: #4c4f69;
     --subtext: #5c5f77;
-    --accent: #04a5e5;
-    --accent-ink: #11111b;
+    --accent: #e64553;
+    --accent-ink: #ffffff;
     --correct: #40a02b;
     --correct-ink: #ffffff;
     --present: #df8e1d;
