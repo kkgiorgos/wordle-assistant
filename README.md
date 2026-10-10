@@ -13,6 +13,17 @@ Local-first helper for solving Wordle. No server, no tracking — everything run
 
 Red row = not in dictionary. Change it to see stats again.
 
+## Docker
+
+```sh
+docker build -t wordle-assistant .
+docker run --rm -p 8080:80 wordle-assistant
+# or
+docker compose up --build
+```
+
+Then open `http://localhost:8080`. Same static files as `file://`, just served over HTTP.
+
 ## What it does
 
 - **Solver:** possible-solution count, live **Current attempt** score for the word being typed (worst-case / average-case / bits, computed instantly against the current field), 3 suggested guesses (worst-case / average-case / most information in bits, hidden when nothing matches), and a clickable candidate list (first 300 shown).
