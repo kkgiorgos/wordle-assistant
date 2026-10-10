@@ -1,7 +1,7 @@
 /* Wordle Assistant — Catppuccin Mocha (dark, sky accent) / Latte (light, maroon accent).
    One accent = one meaning (accent = primary action only).
    Status colors: green = correct, yellow = present, overlay = miss, red = error.
-   Theme: <html data-theme="auto|mocha|latte">, auto follows prefers-color-scheme. */
+   Theme: <html data-theme="mocha|latte">, set by JS (saved choice, else OS setting). */
 
 :root {
   --font-ui: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Inter, sans-serif;
@@ -14,8 +14,8 @@
   --space-4: 24px;
 }
 
-/* Default = Mocha (also used when data-theme=auto + prefers dark, via media query below). */
-:root, :root[data-theme="auto"], :root[data-theme="mocha"] {
+/* Default = Mocha. JS sets data-theme explicitly (saved choice, else OS setting). */
+:root, :root[data-theme="mocha"] {
   color-scheme: dark;
   --base: #1e1e2e;
   --mantle: #181825;
@@ -38,7 +38,7 @@
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
-/* Latte: explicit choice or auto + prefers light. */
+/* Latte: set by the theme toggle. */
 :root[data-theme="latte"] {
   color-scheme: light;
   --base: #eff1f5;
@@ -57,34 +57,9 @@
   --absent: #ccd0da;
   --absent-ink: #4c4f69;  /* 5.2:1 */
   --danger: #d20f39;
-  --key-bg: #e6e9ef;
+  --key-bg: #ffffff;
   --key-bg-hover: #ccd0da;
   --shadow: 0 1px 2px rgba(76, 79, 105, 0.18);
-}
-
-@media (prefers-color-scheme: light) {
-  :root[data-theme="auto"] {
-    color-scheme: light;
-    --base: #eff1f5;
-    --mantle: #e6e9ef;
-    --surface: #ffffff;
-    --surface-2: #e6e9ef;
-    --line: #ccd0da;
-    --text: #4c4f69;
-    --subtext: #5c5f77;
-    --accent: #e64553;
-    --accent-ink: #ffffff;
-    --correct: #40a02b;
-    --correct-ink: #ffffff;
-    --present: #df8e1d;
-    --present-ink: #11111b;
-    --absent: #ccd0da;
-    --absent-ink: #4c4f69;
-    --danger: #d20f39;
-    --key-bg: #e6e9ef;
-    --key-bg-hover: #ccd0da;
-    --shadow: 0 1px 2px rgba(76, 79, 105, 0.18);
-  }
 }
 
 * { box-sizing: border-box; }
@@ -229,16 +204,16 @@ body {
 .key-row { display: flex; gap: 6px; width: 100%; max-width: 420px; }
 .key {
   flex: 1 1 0; min-width: 0; min-height: 44px;
-  border: 0; border-radius: 6px;
+  border: 1px solid var(--line); border-radius: 6px;
   background: var(--key-bg); color: var(--text);
   font-family: var(--font-mono); font-size: 13px; font-weight: 700;
   cursor: pointer; padding: 8px 4px; touch-action: manipulation;
 }
 .key:hover { background: var(--key-bg-hover); }
 .key.wide { flex: 1.6 1 0; font-size: 16px; }
-.key.gray { background: var(--absent); color: var(--absent-ink); }
-.key.yellow { background: var(--present); color: var(--present-ink); }
-.key.green { background: var(--correct); color: var(--correct-ink); }
+.key.gray { background: var(--absent); border-color: var(--absent); color: var(--absent-ink); }
+.key.yellow { background: var(--present); border-color: var(--present); color: var(--present-ink); }
+.key.green { background: var(--correct); border-color: var(--correct); color: var(--correct-ink); }
 
 .board-actions { display: flex; gap: var(--space-1); margin-top: var(--space-3); }
 .board-actions .primary { flex: 1; }
