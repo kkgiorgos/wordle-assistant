@@ -225,21 +225,13 @@ body {
 .solver-count { margin: 0; font-size: 0.9375rem; color: var(--subtext); }
 .solver-count strong { font-family: var(--font-mono); font-size: 1.75rem; color: var(--text); letter-spacing: -0.02em; }
 
-.attempt {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  padding: 10px 12px;
-}
 .attempt-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-2); }
-.attempt-heading { margin: 0; }
 .attempt-word {
   font-family: var(--font-mono); font-size: 1.125rem; font-weight: 700;
   letter-spacing: 0.08em; text-transform: uppercase;
 }
-.attempt p { margin: 4px 0 0; }
-.legend { font-size: 0.75rem; }
-.attempt.is-invalid { border-color: var(--danger); }
+.attempt p { margin: 2px 0 0; }
+.recommender-info { font-size: 0.75rem; margin: 2px 0 0; }
 .attempt.is-invalid .attempt-word { color: var(--danger); }
 
 .suggestions-list { display: flex; flex-direction: column; }
