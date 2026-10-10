@@ -1,4 +1,4 @@
-# AGENTS.md — Wordle Scout
+# AGENTS.md — Wordle Assistant
 
 This is an offline-first Wordle solver static site. Prioritize polishing the solver: UX, performance, and correctness.
 

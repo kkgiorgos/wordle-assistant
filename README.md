@@ -1,4 +1,4 @@
-# Wordle Scout — Offline Wordle Solver
+# Wordle Assistant — Offline Wordle Solver
 
 Local-first helper for solving Wordle. No server, no tracking — everything runs in your browser.
 
