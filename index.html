@@ -3,49 +3,128 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#102f35" />
-    <title>Wordle Scout — Offline Wordle solver</title>
+    <meta name="theme-color" content="#F4F1E8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#121817" media="(prefers-color-scheme: dark)" />
+    <meta name="description" content="Wordle Scout — offline, private Wordle solver. Mark tiles, narrow the field, find the best next guess." />
+    <title>Wordle Scout — Offline Wordle Solver</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <a class="skip-link" href="#board-heading">Skip to board</a>
     <main class="app-shell">
       <header class="topbar">
-        <a class="brand" href="#" aria-label="Wordle Scout home"><span class="brand-mark">W</span><div><p class="eyebrow">OFFLINE SOLVER</p><h1>Wordle Scout</h1></div></a>
-        <div class="top-actions"><span id="dictionaryStatus" class="status-pill">Loading dictionary…</span><button id="newGameBtn" class="button ghost">New game <span class="button-icon">↗</span></button></div>
+        <a class="brand" href="#" aria-label="Wordle Scout home">
+          <span class="brand-mark" aria-hidden="true">W</span>
+          <span class="brand-text">
+            <span class="eyebrow">Offline solver &middot; Private by design</span>
+            <span class="brand-name">Wordle Scout</span>
+          </span>
+        </a>
+        <div class="top-actions">
+          <span id="dictionaryStatus" class="status-pill" role="status" aria-live="polite">Loading dictionary&hellip;</span>
+          <button id="newGameBtn" class="button ghost" type="button">New game</button>
+        </div>
       </header>
 
       <div class="intro">
-        <div><p class="eyebrow">MAKE YOUR NEXT GUESS COUNT</p><h2>Read the board.<br><em>Find the signal.</em></h2></div>
-        <p class="intro-copy">Enter your Wordle guesses below and mark each tile. Scout narrows the field locally, then surfaces the moves with the most useful information.</p>
+        <div class="intro-main">
+          <p class="eyebrow">Play it on paper, solve it like a scout</p>
+          <h1 class="intro-title">Mark the tiles.<br /><em>Scout the next word.</em></h1>
+        </div>
+        <p class="intro-copy">Type a guess, tap each tile to match Wordle&rsquo;s colors, then analyze. Everything runs on this device &mdash; nothing leaves it.</p>
       </div>
 
       <div class="workspace">
-        <section class="board-panel panel">
-          <div class="section-head"><div><p class="eyebrow">CURRENT GAME</p><h3>Guess history</h3></div><span id="guessCount" class="counter">0 / 6</span></div>
-          <div id="board" class="board"></div>
-          <div class="entry-help"><span class="key-hint">HOW TO USE</span> Type a word, then tap tiles to cycle <span class="legend"><i class="legend-gray"></i>miss <i class="legend-yellow"></i>present <i class="legend-green"></i>correct</span></div>
-          <div id="keyboard" class="keyboard" aria-label="On-screen keyboard"></div>
-          <div class="board-actions"><button id="solveBtn" class="button primary">Analyze position <span>→</span></button><button id="undoWordBtn" class="button ghost">Undo word</button></div>
+        <section class="board-panel panel" aria-labelledby="board-heading">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Current game</p>
+              <h2 id="board-heading">Guess history</h2>
+            </div>
+            <span id="guessCount" class="counter" role="status" aria-live="polite">0 / 6</span>
+          </div>
+          <div id="board" class="board" role="group" aria-label="Wordle guesses. Type a word, then activate a tile to cycle its color."></div>
+          <p class="entry-help">
+            <span class="key-hint">How to use</span>
+            Type a word, then tap tiles to cycle
+            <span class="legend">
+              <span class="legend-item"><i class="swatch absent" aria-hidden="true"></i>miss</span>
+              <span class="legend-item"><i class="swatch present" aria-hidden="true"></i>present</span>
+              <span class="legend-item"><i class="swatch correct" aria-hidden="true"></i>correct</span>
+            </span>
+          </p>
+          <div id="keyboard" class="keyboard" role="group" aria-label="On-screen keyboard"></div>
+          <div class="board-actions">
+            <button id="solveBtn" class="button primary" type="button">
+              <span class="button-label">Analyze position</span>
+              <span class="button-arrow" aria-hidden="true">&rarr;</span>
+            </button>
+            <button id="undoWordBtn" class="button ghost" type="button">Undo word</button>
+          </div>
         </section>
 
-        <aside class="insights">
-          <section class="panel snapshot">
-            <div class="section-head"><div><p class="eyebrow">POSITION SNAPSHOT</p><h3>What’s left</h3></div><span class="live-dot">LIVE</span></div>
-            <div class="big-number" id="candidateCount">—</div><p class="muted">possible solutions remaining</p>
-            <div class="stat-grid"><div><strong id="knownGreens">0</strong><span>locked greens</span></div><div><strong id="knownYellows">0</strong><span>known yellows</span></div><div><strong id="excludedLetters">0</strong><span>excluded letters</span></div></div>
+        <aside class="insights" aria-label="Solver insights">
+          <section class="panel snapshot" aria-labelledby="snapshot-heading">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Position snapshot</p>
+                <h2 id="snapshot-heading">What&rsquo;s left</h2>
+              </div>
+              <span class="live-dot" aria-hidden="true"><i></i>Live</span>
+            </div>
+            <div class="big-number" id="candidateCount" role="status" aria-live="polite">&mdash;</div>
+            <p class="muted">possible solutions remaining</p>
+            <div class="stat-grid">
+              <div><strong id="knownGreens">0</strong><span>locked greens</span></div>
+              <div><strong id="knownYellows">0</strong><span>known yellows</span></div>
+              <div><strong id="excludedLetters">0</strong><span>excluded letters</span></div>
+            </div>
           </section>
-          <section class="panel suggestions">
-            <div class="section-head"><div><p class="eyebrow">NEXT MOVE</p><h3>Suggested guesses</h3></div><span id="calculationStatus" class="calculation-status" hidden><i></i> CALCULATING</span></div>
-            <div id="suggestionsList" class="suggestions-list"><div class="empty-state">Add a guess and analyze the position to see the best moves.</div></div>
+          <section class="panel suggestions" aria-labelledby="suggestions-heading">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Next move</p>
+                <h2 id="suggestions-heading">Suggested guesses</h2>
+              </div>
+              <span id="calculationStatus" class="calculation-status" hidden><i aria-hidden="true"></i> Calculating</span>
+            </div>
+            <div id="suggestionsList" class="suggestions-list" aria-live="polite">
+              <div class="empty-state">Add a guess and choose <strong>Analyze position</strong> to see the three most useful moves.</div>
+            </div>
           </section>
         </aside>
       </div>
 
-      <section class="lower-grid">
-        <section class="panel candidates"><div class="section-head"><div><p class="eyebrow">THE FIELD</p><h3>Available solutions</h3></div><span id="fieldCount" class="counter">Waiting</span></div><div id="candidateList" class="candidate-list"><span class="muted">Your remaining words will appear here.</span></div></section>
-        <section class="panel stats"><div class="section-head"><div><p class="eyebrow">FIELD INSIGHTS</p><h3>Letter frequency</h3></div><span class="trophy">✦</span></div><div id="letterStats" class="letter-stats"><span class="muted">Available-word stats will appear here.</span></div></section>
-      </section>
-      <footer><span>WORDLE SCOUT <b>•</b> LOCAL-FIRST</span><span>No data leaves your device</span></footer>
+      <div class="lower-grid">
+        <section class="panel candidates" aria-labelledby="field-heading">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">The field</p>
+              <h2 id="field-heading">Available solutions</h2>
+            </div>
+            <span id="fieldCount" class="counter" role="status" aria-live="polite">Waiting</span>
+          </div>
+          <div id="candidateList" class="candidate-list">
+            <span class="muted">Your remaining words will appear here. Choose one to play it.</span>
+          </div>
+        </section>
+        <section class="panel stats" aria-labelledby="insights-heading">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Field insights</p>
+              <h2 id="insights-heading">Letter frequency</h2>
+            </div>
+            <span class="trophy" aria-hidden="true">✦</span>
+          </div>
+          <div id="letterStats" class="letter-stats">
+            <span class="muted">Coverage across the words still in play.</span>
+          </div>
+        </section>
+      </div>
+      <footer>
+        <span>Wordle Scout <b aria-hidden="true">&middot;</b> Local-first</span>
+        <span>No data leaves your device</span>
+      </footer>
     </main>
     <script src="dictionary.js"></script>
     <script src="app.js"></script>
