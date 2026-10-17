@@ -3,7 +3,7 @@
 This is an offline-first Wordle solver static site. Prioritize polishing the solver: UX, performance, and correctness.
 
 ## Stack & Constraints
-- Current: vanilla static `index.html` + `styles.css` + `app.js` + `worker.js` + `dictionary.js` + `words.txt` / `solutions.txt`. No build, no npm.
+- Current: vanilla static `index.html` + `styles.css` + `app.js` + `worker.js` + `dictionary.js` + `words.txt` / `solutions.txt` + PWA (`manifest.webmanifest`, `sw.js`, `icons/`). No build, no npm.
 - Modern tooling is allowed if useful (npm, Vite, linters, minimal test runner), but do not require it for core use.
 - Offline-first required: must work opened via `file://` with no network and no data leaving device.
 - Keep Web Worker (`worker.js`) working from static files. Avoid dependencies that break `file://` or require a server.
@@ -11,8 +11,9 @@ This is an offline-first Wordle solver static site. Prioritize polishing the sol
 
 ## Repo Map
 - `index.html`: app shell, board / keyboard / insights panels.
-- `app.js`: game state, rendering, `requestAnalysis()` via Worker.
+- `app.js`: game state, rendering, `requestAnalysis()` via Worker; registers SW + install prompt on HTTP(S) only.
 - `worker.js`: `feedback(guess, answer)`, `analyze({words, solutions, guesses})`, candidate filtering + recommendations.
+- `sw.js`, `manifest.webmanifest`, `icons/`: PWA install + offline cache (skipped under `file://`).
 - `dictionary.js`: generates solutions list (`generateSolutions`).
 - `styles.css`: all styling, mobile breakpoints at 800px / 480px / 380px.
 - `words.txt`, `solutions.txt`: dictionaries.
