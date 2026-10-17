@@ -11,7 +11,7 @@ This is an offline-first Wordle solver static site. Prioritize polishing the sol
 
 ## Repo Map
 - `index.html`: app shell, board / keyboard / insights panels.
-- `app.js`: game state, rendering, `requestAnalysis()` via Worker; registers SW + install prompt on HTTP(S) only.
+- `app.js`: game state, rendering, and `requestAnalysis()` via Worker; registers the service worker on HTTP(S) only.
 - `worker.js`: `feedback(guess, answer)`, `analyze({words, solutions, guesses})`, candidate filtering + recommendations.
 - `sw.js`, `manifest.webmanifest`, `icons/`: PWA install + offline cache (skipped under `file://`).
 - `dictionary.js`: generates solutions list (`generateSolutions`).
