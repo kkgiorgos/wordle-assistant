@@ -1,6 +1,6 @@
 /* Wordle Assistant service worker — cache-first offline shell for HTTP(S) installs.
    Not used under file:// (registration is skipped in app.js). */
-const CACHE = 'wordle-assistant-v1';
+const CACHE = 'wordle-assistant-v2';
 const PRECACHE = [
   './',
   './index.html',

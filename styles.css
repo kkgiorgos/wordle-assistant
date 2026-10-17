@@ -132,6 +132,17 @@ body {
 .top-actions { display: flex; align-items: center; gap: var(--space-1); flex-wrap: wrap; }
 .dict-status { font-family: var(--font-mono); font-size: 0.6875rem; color: var(--subtext); }
 
+.install-tip {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-2);
+  padding: 10px 12px;
+  background: var(--mantle);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+}
+.install-tip[hidden] { display: none !important; }
+.install-tip p { margin: 0; font-size: 0.875rem; color: var(--text); line-height: 1.35; }
+.install-tip .button { flex: 0 0 auto; min-height: 40px; padding: 8px 12px; }
+
 /* ---------- Buttons (one prominent action per view) ---------- */
 
 .button {

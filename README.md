@@ -28,10 +28,11 @@ Then open `http://localhost:8080`. Same static files as `file://`, just served o
 
 Serve the site over HTTP(S) first (Docker above, or any static file server). `file://` still works offline, but browsers only install PWAs from a secure context (`https://` or `http://localhost`).
 
-1. Open the app on your phone’s browser.
-2. **Android (Chrome):** tap **Install** in the top bar when it appears, or use the browser menu → **Install app** / **Add to Home screen**.
-3. **iPhone (Safari):** Share → **Add to Home Screen**.
-4. Launch from the home-screen icon — it opens full-screen and keeps working offline after the first visit (service worker caches the shell + dictionary).
+1. Open the app on your phone’s browser (HTTPS required for install).
+2. Tap **Install** in the top bar.
+3. **Android (Chrome/Edge):** the system install prompt appears when the app is installable; otherwise the tip points you to the browser menu → **Install app**.
+4. **iPhone (Safari):** the tip walks you through Share → **Add to Home Screen**.
+5. Launch from the home-screen icon — it opens full-screen and keeps working offline after the first visit (service worker caches the shell + dictionary).
 
 **Same Wi‑Fi as your PC:** run Docker, then open `http://<your-pc-lan-ip>:8080` on the phone. iOS Add to Home Screen works over plain HTTP; Android’s full install prompt needs HTTPS or `localhost` (e.g. `adb reverse tcp:8080 tcp:8080`, then open `http://localhost:8080` on the phone).
 

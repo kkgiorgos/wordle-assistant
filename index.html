@@ -26,11 +26,15 @@
         </span>
         <div class="top-actions">
           <span id="dictionaryStatus" class="dict-status" role="status" aria-live="polite">Loading…</span>
-          <button id="installBtn" class="button ghost" type="button" hidden>Install</button>
+          <button id="installBtn" class="button ghost" type="button" aria-expanded="false" aria-controls="installTip">Install</button>
           <button id="themeBtn" class="button ghost icon-button" type="button" aria-label="Appearance: dark. Activate to switch to light mode."></button>
           <button id="newGameBtn" class="button ghost" type="button">New game</button>
         </div>
       </header>
+      <div id="installTip" class="install-tip" role="status" hidden>
+        <p id="installTipText"></p>
+        <button id="installTipDismiss" class="button ghost" type="button">Got it</button>
+      </div>
 
       <div class="workspace">
         <section class="panel board-panel" aria-labelledby="board-heading">
