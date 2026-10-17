@@ -1,6 +1,6 @@
 /* Wordle Assistant service worker — cache-first offline shell for HTTP(S) installs.
    Not used under file:// (registration is skipped in app.js). */
-const CACHE = 'wordle-assistant-v3';
+const CACHE = 'wordle-assistant-v4';
 const PRECACHE = [
   './',
   './index.html',
@@ -42,7 +42,7 @@ self.addEventListener('fetch', event => {
   if (url.origin !== self.location.origin) return;
 
   event.respondWith(
-    caches.match(request).then(cached => {
+    caches.match(request, {ignoreSearch: request.mode === 'navigate'}).then(cached => {
       if (cached) return cached;
       return fetch(request).then(response => {
         if (!response || response.status !== 200 || response.type !== 'basic') return response;
@@ -51,7 +51,7 @@ self.addEventListener('fetch', event => {
         return response;
       }).catch(() => {
         if (request.mode === 'navigate') return caches.match('./index.html');
-        return undefined;
+        return new Response('', {status: 504, statusText: 'Offline'});
       });
     })
   );
